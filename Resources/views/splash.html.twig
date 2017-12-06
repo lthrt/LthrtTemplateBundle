@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{%if page_title is defined %}{{page_title}}{% else %}Welcome!{% endif %}{% endblock %}
+    </title>
+    {%- block stylesheets -%}
+    {%- endblock stylesheets -%}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {%- block css -%}
+        {% include 'css/baseCSS.twig' %}
+    {%- endblock css -%}
+</head>
+<body>
+    {%- block content -%}
+        <div class="body justify-content-center">
+            {%- block main -%}
+            {%- endblock main -%}
+        </div>
+    {%- endblock content -%}
+    {%- block javascripts -%} 
+        {%- include 'js/baseJavascripts.twig' %}
+    {%- endblock javascripts -%}
+</body>
+</html>

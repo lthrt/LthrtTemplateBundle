@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% if page_title is defined %}{{page_title}}{% else%}Welcome!{% endif %}{% endblock title %}</title>
+    {%- block stylesheets -%}
+    {%- endblock stylesheets -%}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block css %}
+        {% include '@LthrtTemplateBundle/css/baseCSS.twig' %}
+        {% block sidebar_css %}
+            {% include '@LthrtTemplateBundle/css/sidebar.css.html.twig' %}
+        {% endblock sidebar_css %}
+        {% include '@LthrtTemplateBundle/css/grid.css.html.twig' %}
+    {% endblock css %}
+</head>
+<body>
+    {%- block main -%}
+        <div class="grid{% if app.request.cookies.get('sidebar') == 'closed' %} sidebarClosed{% endif %}" id="grid">
+            {%- block header -%}
+                <div class="d-flex justify-content-between align-items-stretch zindex-fixed header sticky-top">
+                    <div class="p-2">
+                        {%- block brand -%}
+                            {% include '@LthrtTemplateBundle/Block/brand.html.twig' %}
+                        {%- endblock brand -%}
+                    </div>
+                    {%- block header_main -%}
+                    {%- endblock header_main -%}
+                    <div class="p-2">
+                        {% include '@LthrtTemplateBundle/Block/userMenu.html.twig' %}
+                    </div>
+                </div>
+            {%- endblock header -%}
+            {%- block body -%}
+                {% include '@LthrtTemplateBundle/Block/sidebar.html.twig' %}
+                <div class="main">
+                {% include '@LthrtTemplateBundle/Block/flash.html.twig' %}
+                    {% block content %}
+                        {% include '@LthrtTemplateBundle/Block/content.html.twig' %}
+                    {% endblock content %}
+                </div>
+            </div>
+        {%- endblock body -%}
+    {%- endblock main -%}
+    {%- block javascripts -%} 
+        {% include '@LthrtTemplateBundle/js/baseJavascripts.twig' %}
+        {% block sidebar_js %}
+            {% include '@LthrtTemplateBundle/js/sidebar.js.html.twig' %}       
+        {% endblock sidebar_js %}
+    {%- endblock javascripts -%}
+</body>
+</html>

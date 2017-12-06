@@ -1,0 +1,4 @@
+services:
+#    lthrt_template.example:
+#        class: Lthrt\TemplateBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

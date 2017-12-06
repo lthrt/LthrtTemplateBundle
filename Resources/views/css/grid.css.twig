@@ -1,0 +1,43 @@
+:root {
+    --pad : 0.2em;
+    --header: 2em;
+    --margin: 0.2em;
+}
+
+.grid.sidebarClosed {
+    --sidebar: 2em;
+}
+
+.grid {
+    --sidebar: 15em;
+    display:grid;
+    grid-gap: var(--pad);
+    grid-template-rows: [header] var(--header) 1fr [headernull]; 
+    grid-template-columns: [sidebar] var(--sidebar) 1fr; 
+    background-color:#FFFFFF00;
+    grid-template-areas:
+    "header header headernull"
+    "sidebar main main";
+    // margin-top: var(--margin)
+    overflow: auto;
+}
+
+
+.sidebar {
+    grid-area:sidebar;
+    background-color:#AAAAAAFF;
+    text-overflow: ellipsis;
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.header {
+    grid-area:header;
+    background-color:#EEEEEEFF;
+}
+
+.main {
+    grid-area:main;
+    background-color:#FFFFFF00;
+}

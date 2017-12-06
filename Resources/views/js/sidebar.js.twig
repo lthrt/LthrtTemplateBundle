@@ -1,0 +1,18 @@
+const wireSideBarToggle =() => {
+
+    let sidebar = document.querySelector("div.sidebar");
+    sidebar.addEventListener("click", function(event) {
+        let expires = (
+            $('div.grid').hasClass('sidebarClosed') 
+            ? (new Date('1970')) 
+            : (new Date(new Date().setFullYear(new Date().getFullYear() + 1)))
+        );
+        $('div.grid').toggleClass('sidebarClosed');
+        document.cookie = "sidebar=closed; expires="+expires.toUTCString();
+    });
+}
+
+// onload
+(function() {
+    wireSideBarToggle();
+})();
